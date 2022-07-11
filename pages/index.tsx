@@ -1,28 +1,13 @@
 import type { NextPage } from "next";
-import { Button, Htag, P, Tag } from "../components";
-import { useEffect, useState } from "react";
+import { Button, Htag, P, Rating, Tag } from "../components";
+import { useState } from "react";
 
 const Home: NextPage = () => {
-  const [counter, setCounter] = useState<number>(0);
-
-  useEffect(() => {
-    console.log(counter);
-    return function cleanup() {
-      console.log("unmount");
-    };
-  }, []);
-
+  const [rating, setRating] = useState<number>(4);
   return (
     <>
-      <Htag tag="h1">{counter}</Htag>
-      <Button
-        appearance="primary"
-        arrow="down"
-        className="foo"
-        onClick={() => {
-          setCounter((x) => x + 1);
-        }}
-      >
+      <Htag tag="h1">Text</Htag>
+      <Button appearance="primary" arrow="down" className="foo">
         Button
       </Button>
       <Button appearance="ghost" arrow="right">
@@ -50,6 +35,8 @@ const Home: NextPage = () => {
       <Tag size="s" color="primary">
         lorem
       </Tag>
+
+      <Rating rating={rating} isEditable setRating={setRating} />
     </>
   );
 };
